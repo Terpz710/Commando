@@ -29,6 +29,6 @@ class TargetPlayerArgument extends BaseArgument{
 	}
 
 	public function parse(string $argument, CommandSender $sender): string{
-		return strtolower($argument);
+		return $argument;
 	}
 }
