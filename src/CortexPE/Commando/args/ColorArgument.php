@@ -35,7 +35,7 @@ class ColorArgument extends StringEnumArgument {
         return "color";
     }
 
-    public function parse(string $argument, CommandSender $sender) : string {
+    public function parse(string $argument, CommandSender $sender) : string{
         return $this->getValue($argument);
     }
 }
