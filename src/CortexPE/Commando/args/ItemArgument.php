@@ -9,26 +9,32 @@ use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
 
-use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
+class ItemArgument extends StringEnumArgument {
 
-class ItemArgument extends BaseArgument {
+    protected const VALUES = [];
+
+    public function __construct() {
+        if (empty(self::VALUES)) {
+            foreach (StringToItemParser::getInstance()->getKnownAliases() as $alias) {
+                self::VALUES[$alias] = $alias;
+            }
+        }
+
+        parent::__construct($name, $optional);
+    }
 
     public function getTypeName() : string{
         return "item";
     }
 
-    public function getNetworkType() : int{
-        return AvailableCommandsPacket::ARG_TYPE_STRING;
-    }
-
-    public function canParse(string $testString, CommandSender $sender) : bool{
-        return StringToItemParser::getInstance()->parse($testString) !== null;
+    public function getEnumName() : string{
+        return "item";
     }
 
     public function parse(string $argument, CommandSender $sender) : Item{
         $item = StringToItemParser::getInstance()->parse($argument);
 
-        if($item === null){
+        if ($item === null) {
             throw new \InvalidArgumentException("Invalid item ID: " . $argument);
         }
 
