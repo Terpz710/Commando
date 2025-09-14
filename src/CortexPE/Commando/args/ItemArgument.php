@@ -11,12 +11,12 @@ use pocketmine\item\StringToItemParser;
 
 class ItemArgument extends StringEnumArgument {
 
-    protected const VALUES = [];
+    protected static array $VALUES = [];
 
     public function __construct() {
-        if (empty(self::VALUES)) {
+        if (empty(self::$VALUES)) {
             foreach (StringToItemParser::getInstance()->getKnownAliases() as $alias) {
-                self::VALUES[$alias] = $alias;
+                self::$VALUES[$alias] = $alias;
             }
         }
 
@@ -31,7 +31,7 @@ class ItemArgument extends StringEnumArgument {
         return "item";
     }
 
-    public function parse(string $argument, CommandSender $sender) : Item{
+    public function parse(string $argument, CommandSender $sender) : Item {
         $item = StringToItemParser::getInstance()->parse($argument);
 
         if ($item === null) {
