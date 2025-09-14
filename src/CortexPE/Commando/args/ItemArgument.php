@@ -13,12 +13,16 @@ class ItemArgument extends StringEnumArgument {
 
     protected static array $VALUES = [];
 
-    public function __construct() {
+    public function __construct(bool $optional = false, ?string $name = null) {
         if (empty(self::$VALUES)) {
             foreach (StringToItemParser::getInstance()->getKnownAliases() as $alias) {
                 self::$VALUES[$alias] = $alias;
             }
         }
+
+        $name = is_null($name) ? "player" : $name;
+
+		parent::__construct($name, $optional);
     }
 
     public function getTypeName() : string{
