@@ -13,7 +13,7 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 
 class ItemArgument extends BaseArgument {
 
-    public function getTypeName() : string{
+    public function getTypeName() : string {
         return "item";
     }
 
