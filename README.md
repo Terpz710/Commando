@@ -17,3 +17,5 @@ We will try to keep this fork up-to-date with the upstream changes.
 
 -----
 **This framework was made with :heart: by CortexPE, modified by Paroxity. Enjoy!~ :3**
+
+**Terpz710 Fork**
