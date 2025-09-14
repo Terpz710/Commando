@@ -19,8 +19,6 @@ class ItemArgument extends StringEnumArgument {
                 self::$VALUES[$alias] = $alias;
             }
         }
-
-        parent::__construct($name, $optional);
     }
 
     public function getTypeName() : string{
